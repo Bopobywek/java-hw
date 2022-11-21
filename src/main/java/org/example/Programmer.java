@@ -1,7 +1,8 @@
 package org.example;
 
+import java.util.Random;
 
-public class Programmer extends Employee {
+public class Programmer extends Employee implements GradableSalary {
     public Programmer(String name, Integer age, Integer salary) {
         super(name, age, salary);
     }
@@ -17,7 +18,7 @@ public class Programmer extends Employee {
 
     @Override
     public void makeRest() {
-        System.out.printf("I'm programmer %s, so i make a rest with a cup of coffee\n", getName());
+        System.out.printf("I'm programmer %s, so I rest while drinking coffee\n", getName());
         changeEnergy(100);
     }
 
@@ -25,4 +26,12 @@ public class Programmer extends Employee {
     public String toString() {
         return String.format("Programmer %s. Age: %d. Salary: %d", getName(), getAge(), getSalary());
     }
+
+    @Override
+    public int getGrade() {
+        Random rand = new Random();
+        return rand.nextInt(10, 100);
+    }
+
+    // changeSalary реализован в родительском классе
 }

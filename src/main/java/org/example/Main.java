@@ -11,8 +11,32 @@ public class Main {
         var boss = new Executive("Boss Bossovich Bossov", 48, 100000, companyStaff);
         companyStaff.add(boss);
 
+        System.out.println("Company staff:");
         for (var employee : companyStaff) {
             System.out.println(employee);
+        }
+        System.out.println();
+
+        for (var employee : companyStaff) {
+            if (employee instanceof GradableSalary gradable) {
+                System.out.println("Should we increase salary for " + employee.getName() + "?");
+                int result = gradable.getGrade();
+                System.out.println("Test result: " + result);
+                if (result < 50) {
+                    System.out.println("!!!!! -social credits !!!!!\n Bad result: -salary");
+
+                    try {
+                        gradable.changeSalary(-600);
+                    } catch (Exception e) {
+                        System.out.println("Ooops, salary already low...");
+                    }
+                } else {
+                    System.out.println("GOOD! +salary");
+                    gradable.changeSalary(50);
+                }
+
+                System.out.println();
+            }
         }
     }
 }

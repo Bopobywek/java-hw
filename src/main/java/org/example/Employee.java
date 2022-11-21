@@ -39,11 +39,15 @@ public abstract class Employee {
         return salary;
     }
 
-    private void setSalary(Integer value) {
+    protected void setSalary(Integer value) {
         if (value < 0) {
             throw new IllegalArgumentException("Salary cannot be less than 0");
         }
         salary = value;
+    }
+
+    public void changeSalary(int difference) {
+        setSalary(getSalary() + difference);
     }
 
     public abstract void doWork();

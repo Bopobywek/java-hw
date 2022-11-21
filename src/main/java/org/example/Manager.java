@@ -2,7 +2,7 @@ package org.example;
 
 import java.util.ArrayList;
 
-public class Manager extends Employee {
+public class Manager extends Employee implements GradableSalary {
     ArrayList<Employee> staff = new ArrayList<>();
     public Manager(String name, Integer age, Integer salary, ArrayList<Employee> staff) {
         super(name, age, salary);
@@ -23,6 +23,11 @@ public class Manager extends Employee {
     public void makeRest() {
         System.out.println("I'm a manager, so I went on vacation to Hawaii");
         changeEnergy(100);
+    }
+
+    @Override
+    public int getGrade() {
+        return 100;
     }
 
     @Override
